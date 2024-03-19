@@ -12,8 +12,11 @@ dependencies:
     specifier: 11.11.0
     version: 11.11.0(@emotion/react@11.11.4)(@types/react@18.2.67)(react@18.2.0)
   '@fontsource/roboto':
-    specifier: ^5.0.12
+    specifier: 5.0.12
     version: 5.0.12
+  '@metamask/detect-provider':
+    specifier: ^2.0.0
+    version: 2.0.0
   '@mui/material':
     specifier: 5.15.14
     version: 5.15.14(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@types/react@18.2.67)(react-dom@18.2.0)(react@18.2.0)
@@ -525,6 +528,11 @@ packages:
   /@humanwhocodes/object-schema@2.0.2:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
     dev: true
+
+  /@metamask/detect-provider@2.0.0:
+    resolution: {integrity: sha512-sFpN+TX13E9fdBDh9lvQeZdJn4qYoRb/6QF2oZZK/Pn559IhCFacPMU1rMuqyXoFQF3JSJfii2l98B87QDPeCQ==}
+    engines: {node: '>=14.0.0'}
+    dev: false
 
   /@mui/base@5.0.0-beta.40(@types/react@18.2.67)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-I/lGHztkCzvwlXpjD2+SNmvNQvB4227xBXhISPjEaJUXGImOQ9f3D2Yj/T3KasSI/h0MLWy74X0J6clhPmsRbQ==}
