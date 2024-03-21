@@ -2,7 +2,7 @@ import Web3 from "web3";
 import { QUIZ_ABI } from "../utils/abis/quiz.abi";
 
 // TODO: Move it to env var
-const QUIZ_ADDRESS = "0x437eF217203452317C3C955Cf282b1eE5F6aaF72";
+const QUIZ_ADDRESS = import.meta.env.VITE_QUIZ_CONTRACT_ADDRESS;
 
 export const getProvider = () => {
   if (!window.ethereum) {
@@ -26,7 +26,6 @@ export const getBalance = async (address: string) => {
   const contract = await getQuizContract();
   const balance = (await contract.methods.balanceOf(address).call()) as bigint;
   const decimals = (await contract.methods.decimals().call()) as number;
-  console.log(balance, decimals);
   return getProvider().utils.fromWei(balance, DECIMAL_UNIT[decimals]);
 };
 

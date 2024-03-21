@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getBalance } from "../services/quiz.service";
 
 export const WalletInfo = () => {
-  const { wallet, hasProvider } = useMetaMask();
+  const { wallet, hasProvider, isAccountConnected } = useMetaMask();
   const { data, isSuccess } = useQuery({
     enabled: Boolean(hasProvider && wallet.accounts[0]),
     queryKey: ["balance", wallet.accounts[0]],
@@ -15,14 +15,14 @@ export const WalletInfo = () => {
     },
   });
 
-  const isAccountConnected = hasProvider && wallet.accounts.length > 0;
-
   return (
     <Box paddingTop={1}>
       {isAccountConnected ? (
         <Paper elevation={3}>
           <Box padding={1}>
-            <Typography>{`Complete address: ${wallet.accounts[0]}`}</Typography>
+            <Typography
+              noWrap
+            >{`Complete address: ${wallet.accounts[0]}`}</Typography>
             <Typography>{`Chain id: ${wallet.chainId}`}</Typography>
             <Typography>{`$QUIZ balance: ${
               isSuccess ? data : "Loading..."

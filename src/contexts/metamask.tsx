@@ -7,7 +7,7 @@ import {
   useState,
 } from "react";
 import detectEthereumProvider from "@metamask/detect-provider";
-import { formatBalance } from "../utils/web3";
+import { formatBalance, isGoerli } from "../utils/web3";
 
 interface WalletState {
   accounts: any[];
@@ -24,6 +24,8 @@ interface MetaMaskContextData {
   connectMetaMask: () => void;
   clearError: () => void;
   switchToChain: (chainId: string) => void;
+  isAccountConnected: boolean;
+  isConnectedToGoerli: boolean;
 }
 
 const disconnectedState: WalletState = {
@@ -37,7 +39,7 @@ export const MetaMaskContext = createContext<MetaMaskContextData>(
 );
 
 export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
-  const [hasProvider, setHasProvider] = useState<boolean | null>(null);
+  const [hasProvider, setHasProvider] = useState<boolean>(false);
 
   const [isConnecting, setIsConnecting] = useState(false);
 
@@ -98,6 +100,7 @@ export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
   }, [updateWallet, updateWalletAndAccounts]);
 
   const connectMetaMask = async () => {
+    console.log("connecting");
     setIsConnecting(true);
 
     try {
@@ -134,6 +137,8 @@ export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
         connectMetaMask,
         clearError,
         switchToChain,
+        isAccountConnected: hasProvider && wallet.accounts.length > 0,
+        isConnectedToGoerli: isGoerli(wallet.chainId),
       }}
     >
       {children}

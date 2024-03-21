@@ -1,17 +1,22 @@
 import Link from "@mui/material/Link";
 import { useMetaMask } from "../hooks/useMetamask";
 import Button from "@mui/material/Button";
-import { CHAIN_ID, formatAddress, isGoerli } from "../utils/web3";
+import { CHAIN_ID, formatAddress } from "../utils/web3";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
 export const MetamaskConnection = () => {
   const data = useMetaMask();
-  const { wallet, hasProvider, isConnecting, connectMetaMask, switchToChain } =
-    data;
+  const {
+    wallet,
+    hasProvider,
+    isConnecting,
+    connectMetaMask,
+    switchToChain,
+    isConnectedToGoerli,
+  } = data;
   const mustConnect = window.ethereum?.isMetaMask && wallet.accounts.length < 1;
   const isAccountConnected = hasProvider && wallet.accounts.length > 0;
-  const isConnectedToGoerli = isGoerli(wallet.chainId);
   return (
     <Box sx={{ display: "flex", gap: "15px", alignItems: "center" }}>
       {!hasProvider && (
