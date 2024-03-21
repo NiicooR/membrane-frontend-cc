@@ -21,16 +21,22 @@ dependencies:
     specifier: 5.15.14
     version: 5.15.14(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@types/react@18.2.67)(react-dom@18.2.0)(react@18.2.0)
   '@tanstack/react-query':
-    specifier: ^5.28.4
+    specifier: 5.28.4
     version: 5.28.4(react@18.2.0)
+  '@tanstack/react-query-devtools':
+    specifier: ^5.28.6
+    version: 5.28.6(@tanstack/react-query@5.28.4)(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
+  react-hook-form:
+    specifier: ^7.51.1
+    version: 7.51.1(react@18.2.0)
   web3:
-    specifier: ^4.6.0
+    specifier: 4.6.0
     version: 4.6.0(typescript@5.4.2)
 
 devDependencies:
@@ -997,6 +1003,21 @@ packages:
 
   /@tanstack/query-core@5.28.4:
     resolution: {integrity: sha512-uQZqOFqLWUvXNIQZ63XdKzg22NtHzgCBUfDmjDHi3BoF+nUYeBNvMi/xFPtFrMhqRzG2Ir4mYaGsWZzmiEjXpA==}
+    dev: false
+
+  /@tanstack/query-devtools@5.28.6:
+    resolution: {integrity: sha512-DXJGqbrsteWU9XehDf6s3k3QxwQqGUlNXpitsF1xbwkYBcDaAakiC6hjJSMfPBHOrbZCnWfAGCVf4vh2D75/xw==}
+    dev: false
+
+  /@tanstack/react-query-devtools@5.28.6(@tanstack/react-query@5.28.4)(react@18.2.0):
+    resolution: {integrity: sha512-xSfskHlM2JkP7WpN89UqhJV2RbFxg8YnOMzQz+EEzWSsgxMI5Crce8HO9pcUAcJce8gSmw93RQwuKNdG3FbT6w==}
+    peerDependencies:
+      '@tanstack/react-query': ^5.28.6
+      react: ^18.0.0
+    dependencies:
+      '@tanstack/query-devtools': 5.28.6
+      '@tanstack/react-query': 5.28.4(react@18.2.0)
+      react: 18.2.0
     dev: false
 
   /@tanstack/react-query@5.28.4(react@18.2.0):
@@ -2190,6 +2211,15 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-hook-form@7.51.1(react@18.2.0):
+    resolution: {integrity: sha512-ifnBjl+kW0ksINHd+8C/Gp6a4eZOdWyvRv0UBaByShwU8JbVx5hTcTWEcd5VdybvmPTATkVVXk9npXArHmo56w==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-is@16.13.1:
