@@ -24,3 +24,8 @@ VITE_QUIZ_CONTRACT_ADDRESS="0x437eF217203452317C3C955Cf282b1eE5F6aaF72"
 - Display trivia success component after submit event is successful 
 - Handle unanswered values properly 
 - .env file must not be part of the project.
+
+
+## Video
+https://github.com/NiicooR/membrane-frontend-cc/assets/8942628/9a38dafa-0423-480b-ac6a-ca2b8f9585d2
+
