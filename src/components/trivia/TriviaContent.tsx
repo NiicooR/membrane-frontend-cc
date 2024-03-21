@@ -8,7 +8,9 @@ export const TriviaContent = ({ children }: { children: ReactElement[] }) => {
   if (isConnecting) return <Typography>Connecting Wallet...</Typography>;
 
   if (!isAccountConnected || (isAccountConnected && !isConnectedToGoerli))
-    return <Typography>First you must connect with your wallet</Typography>;
+    return (
+      <Typography>Please connect your wallet in Goerli network</Typography>
+    );
 
   return children;
 };

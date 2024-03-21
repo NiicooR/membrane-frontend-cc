@@ -7,11 +7,10 @@ import {
   useState,
 } from "react";
 import detectEthereumProvider from "@metamask/detect-provider";
-import { formatBalance, isGoerli } from "../utils/web3";
+import { isGoerli } from "../utils/web3";
 
 interface WalletState {
   accounts: any[];
-  balance: string;
   chainId: string;
 }
 
@@ -30,7 +29,6 @@ interface MetaMaskContextData {
 
 const disconnectedState: WalletState = {
   accounts: [],
-  balance: "",
   chainId: "",
 };
 
@@ -48,26 +46,24 @@ export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
 
   const [wallet, setWallet] = useState(disconnectedState);
   const _updateWallet = useCallback(async (providedAccounts?: any) => {
+    setIsConnecting(true);
+
     const accounts =
       providedAccounts ||
       (await window.ethereum.request({ method: "eth_accounts" }));
 
     if (accounts.length === 0) {
       setWallet(disconnectedState);
+      setIsConnecting(false);
       return;
     }
 
-    const balance = formatBalance(
-      await window.ethereum.request({
-        method: "eth_getBalance",
-        params: [accounts[0], "latest"],
-      })
-    );
     const chainId = await window.ethereum.request({
       method: "eth_chainId",
     });
 
-    setWallet({ accounts, balance, chainId });
+    setWallet({ accounts, chainId });
+    setIsConnecting(false);
   }, []);
 
   const updateWalletAndAccounts = useCallback(
@@ -100,7 +96,6 @@ export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
   }, [updateWallet, updateWalletAndAccounts]);
 
   const connectMetaMask = async () => {
-    console.log("connecting");
     setIsConnecting(true);
 
     try {
