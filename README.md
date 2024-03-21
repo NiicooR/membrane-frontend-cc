@@ -15,4 +15,6 @@ Open [http://localhost:5173/](http://localhost:5173/) with your browser to see t
 
 ## Improvements
 
-
+- Move from Goerli to Sepolia to try the entire flow
+- Display trivia success component after submit event is successful 
+- Handle unanswered values properly 
